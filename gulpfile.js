@@ -116,7 +116,7 @@ gulp.task("info",function(){
 gulp.task('dev', gulpsync.sync([
 		'clean',
 		'jshint',
-		['copy-static','copy-templates'],
+		['copy-static','copy-templates','copy-i18n'],
 		['concat-vendor-css','concat-vendor-js','concat-app-js','concat-app-css'],
 		['uglify','uglify-app'],
 		['minifyCss','minifyCss-app','htmlMinify'],
@@ -131,9 +131,10 @@ gulp.task('dev', gulpsync.sync([
 
 gulp.task('default', gulpsync.sync([
 		'clean',
+		'clean-target',
 		'jshint',
 		[/**'doc-api',*/'doc-js'],
-		['copy-static','copy-templates'],
+		['copy-static','copy-templates','copy-i18n'],
 		['concat-vendor-css','concat-vendor-js','concat-app-js','concat-app-css'],
 		['uglify','uglify-app'],
 		['minifyCss','minifyCss-app','htmlMinify'],

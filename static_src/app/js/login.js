@@ -99,6 +99,9 @@
                 clearInput();
                 showError(res.code);
               }
+            }).fail(function(res){
+              clearInput();
+              showError(res.responseJSON.code);
             });
             e.preventDefault();
             return false;

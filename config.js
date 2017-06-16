@@ -17,6 +17,7 @@ var STATIC = "static",
 	DEV = "dev",
 	DIST = "dist",
 	APIDOC = "apidoc",
+	I18N = "i18n",
 	API = "api",
 	DOC = "doc",
 	JS = "js",
@@ -35,7 +36,8 @@ var STATIC = "static",
 
 var app = "suqihan";
 
-var src = _P(ROOT,app),
+var src = ROOT,
+	target= _P(ROOT,app),
 	src_static = _P(ROOT,"static_src"),
 	src_template = _P(ROOT,"templates_src"),
 	dest = _P(ROOT,DIST),
@@ -64,6 +66,9 @@ var exp = {
 	clean:{
         "":{
         	src: [_P(dest,ALL),_P(build,ALL),_P(doc,ALL)],
+        },
+        "target":{
+        	src:[_P(target,STATIC,ALL)]
         }
     },
 	jshint:{
@@ -76,7 +81,7 @@ var exp = {
 	},
 	doc:{
 		api:{
-			src:src,
+			src:target,
 			dest:apidoc,
 			config:_P(ROOT,CONFIG,API),
 		},
@@ -95,13 +100,17 @@ var exp = {
 			src:_P(src_template,ALL),
 			dest:_P(build_src_template)
 		},
+		i18n:{
+			src:_P(src_static,I18N,ALL),
+			dest:_P(build_rev_static,I18N)
+		},
 		dist:{
 			src:_P(build_rev,ALL),
 			dest:dest
 		},
 		collect:{
 			src:_P(dest,ALL),
-			dest:src,
+			dest:target,
 		}
 	},
 	concat:{// concat
@@ -138,14 +147,18 @@ var exp = {
 			src:_P(build_src_static,JS,ALL_JS),
 			dest:_P(build_min_static,JS),
 			uglifyConf: {
-				mangle:false,
+				mangle:{
+					reserved:['export','$','jQuery','module']
+				},
 			},
 		},
 		app:{
 			src:_P(build_src_static,APP,ALL_JS),
 			dest:_P(build_min_static,APP),
 			uglifyConf: {
-				mangle:false,
+				mangle:{
+					reserved:['export','$','jQuery','module']
+				},
 			},
 		}
 

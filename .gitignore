@@ -16,3 +16,4 @@ suqihan/migrations
 suqihan/templates
 /suqihan/static/*
 !suqihan/static/i18n
+
