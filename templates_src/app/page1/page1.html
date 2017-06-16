@@ -1,0 +1,19 @@
+{% extends "./base/base_site.html" %}
+{% block title %}
+	page1 in title
+{% endblock title%}
+{% block ext_script %}
+    <script src="{% static 'app/js/page1/page1.js' %}"></script>
+{% endblock %}
+
+{% block block2 %}
+	
+	<div>
+	<hr/>
+	<span class="glyphicon glyphicon-search"></span>
+	here is replaced block2<br/>
+	<a href="/logout">logout here</a>
+	<hr/>
+	</div>
+ 
+{% endblock block2 %}

@@ -1,0 +1,22 @@
+{% extends "./base/base_site.html" %}
+{% load static%}
+
+{% block extstyle%}
+	<link rel="stylesheet" href="{% static 'app/css/login.css' %}"/>
+{% endblock%}
+{% block body %}
+<body>
+	<!-- core elements without style-->
+	<form id = 'login_form' method="post" name = 'loginform' action="/login/">
+		{% csrf_token %}
+		<input type="text" placeholder="Username" id='username' name = "username">
+		<input type="password" placeholder="Password" id="password" name= "password">
+		<button id='login_btn' type="button">Login</button>
+		<a id='reset_password_button' type="button" href="/auth/password_reset/">Forget Password?</a>
+		
+	</form>
+
+	<!-- scripts -->
+	<script src="{% static 'app/js/login.js' %}"></script>
+</body>
+{% endblock body %}
