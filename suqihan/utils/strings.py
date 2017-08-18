@@ -1,6 +1,7 @@
-import string
 import random
 import re
+import string
+
 
 def genStr(size,scope=None):
     scope = scope or string.ascii_letters + string.digits
@@ -29,6 +30,9 @@ class PartialFormatter(string.Formatter):
         except ValueError:
             if self.bad_fmt is not None: return self.bad_fmt   
             else: raise
+            
+def urlStringArr(urlString,spliter=','):
+    return urlString.strip().split(spliter)
             
 def getDecentAttr(obj,key=None,error="(!!)"):
     try:

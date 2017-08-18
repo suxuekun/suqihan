@@ -1,8 +1,8 @@
 from django.contrib.admin import StackedInline
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from ..models.baseModelAdmin import BaseModelAdminDefaultOrdering
+
 from ..actions import import_as_csv
-    
+from ..models.baseModelAdmin import BaseModelAdminDefaultOrdering
 from .models import UserInfo
 
 class UserInfoInline(StackedInline):
@@ -15,7 +15,7 @@ class UserAdmin(BaseUserAdmin):
     actions = (import_as_csv,)
     
 class UserInfoAdmin(BaseModelAdminDefaultOrdering):
-    pass
+    list_display = ('user',)
 
 
     

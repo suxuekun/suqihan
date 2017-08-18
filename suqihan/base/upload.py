@@ -1,6 +1,9 @@
 import os
+
 from django.conf import settings
+
 from ..utils.strings import genStr
+
 
 def getFileSuffix(filename):
     filename, file_extension = os.path.splitext(filename)

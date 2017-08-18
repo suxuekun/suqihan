@@ -1,6 +1,7 @@
 from django.contrib.admin.options import get_content_type_for_model
-from django.utils.encoding import force_text
 from django.contrib.auth import authenticate
+from django.utils.encoding import force_text
+
 
 def log_addition(request, instance, message):
     """

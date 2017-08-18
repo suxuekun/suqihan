@@ -1,7 +1,9 @@
 from StringIO import StringIO
+
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
 from xlwt.Workbook import Workbook
+
 
 def make_active(modeladmin, request, queryset):
     queryset.update(is_active=True)

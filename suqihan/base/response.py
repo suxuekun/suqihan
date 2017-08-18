@@ -1,4 +1,6 @@
 from suqihan import utils
+
+
 class GeneralResponseWrapper(object):
     def __init__(self,code = 0 ,result = {}):
         self.code=code

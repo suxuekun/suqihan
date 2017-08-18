@@ -1,17 +1,18 @@
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.tokens import default_token_generator
+from django.contrib.auth.views import deprecate_current_app
 from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail.message import EmailMultiAlternatives
+from django.http.response import HttpResponseRedirect
+from django.shortcuts import resolve_url
+from django.template import loader
+from django.template.response import TemplateResponse
+from django.urls import reverse
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
-from django.template import loader
-from django.core.mail.message import EmailMultiAlternatives
-from django.contrib.auth.views import deprecate_current_app
-from django.views.decorators.csrf import csrf_protect
-from django.urls import reverse
-from django.shortcuts import resolve_url
-from django.http.response import HttpResponseRedirect
-from django.template.response import TemplateResponse
 from django.utils.translation import ugettext as _
+from django.views.decorators.csrf import csrf_protect
+
 
 class MyPasswordResetForm(PasswordResetForm):
     def send_mail(self, subject_template_name, email_template_name,
@@ -25,7 +26,6 @@ class MyPasswordResetForm(PasswordResetForm):
         body = loader.render_to_string(email_template_name, context)
 
         email_message = EmailMultiAlternatives(subject, body, from_email, [to_email])
-        print subject,from_email,to_email,body,
         if html_email_template_name is not None:
             html_email = loader.render_to_string(html_email_template_name, context)
             email_message.attach_alternative(html_email, 'text/html')
@@ -58,12 +58,10 @@ class MyPasswordResetForm(PasswordResetForm):
             }
             if extra_email_context is not None:
                 context.update(extra_email_context)
-            print user,
             result = self.send_mail(
                 subject_template_name, email_template_name, context, from_email,
                 user.email, html_email_template_name=html_email_template_name,
             )
-            print result;
         return result;
     
 @deprecate_current_app
@@ -99,7 +97,6 @@ def password_reset(request,
                 'extra_email_context': extra_email_context,
             }
             result = form.save(**opts)
-            print 'email result',result;
             if result:
                 return HttpResponseRedirect(post_reset_redirect)
             else:

@@ -1,8 +1,10 @@
-import json
 import datetime
 import decimal
+import json
+
 from django import template
-from . import date,strings,csvUtil
+
+from . import date, strings, csvUtil
 
 
 class Struct:

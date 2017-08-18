@@ -1,8 +1,12 @@
-import csv
 from StringIO import StringIO
-from xlwt import Workbook
+import csv
+
 from django.http.response import HttpResponse
+from xlwt import Workbook
+
 from strings import getDecentAttrSilent
+
+
 def recordLine(line):
     return line;
 

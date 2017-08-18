@@ -1,5 +1,6 @@
+OK = "0";
+ERROR = "1";
 #AUTH 001xxx
-
 NOT_LOGIN_IN = '1001';
 LOGIN_FAIL = '1002';
 

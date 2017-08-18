@@ -28,26 +28,49 @@
 
     {% endblock%}
     {% block script %}
-
-    {% endblock %}
-    {% block ext_script %}
         <script src="{% static 'js/vendor.js' %}"></script>
         <script src="{% static 'js/app.js' %}"></script>
+    {% endblock %}
+    {% block ext_script %}
+        
     {% endblock %}
 </head>
 {% endblock head %}
 {% block body %}
- <body>
+ <body class="fixed">
 <!-- manage your own site base layout-->
-    {% block block1 %}
-     	here is block1
-    {% endblock block1 %}
-    {% block block2 %}
-     	here is block2
-    {% endblock block2 %}
-    {% block block3 %}
-     	here is block3
-    {% endblock block3 %}
+    {% block header %}
+     	<div class="ui-header so-header ">
+            {% block header_content %}
+                <div class="e-item">
+                    这里是header 文字
+                </div>
+                <div class="e-item pull-right">
+                    这里是header right
+                </div>
+            {% endblock header_content %}
+        </div>
+    {% endblock header %}
+    {% block content %}
+        <div class="ui-content container-fluid">
+            {% block content_content %}
+            {% endblock content_content %}
+        </div>
+    {% endblock content %}
+    {% block footer %}
+     	<div class="ui-footer">
+            {% block footer_content %}
+                <div class="e-item">
+                    这里是footer 文字
+                </div>
+                <div class="e-item pull-right">
+                    footer right
+                </div>
+            {% endblock footer_content %}
+        </div>
+    {% endblock footer %}
+    {% block modal %}
+    {% endblock modal %}
 
 </body>
 {% endblock body %}

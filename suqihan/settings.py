@@ -42,7 +42,7 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'suxuekundev@gmail.com'
-EMAIL_HOST_PASSWORD = 'demo'
+EMAIL_HOST_PASSWORD = '1986093009'
 # EMAIL_HOST = 'smtp.office365.com'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 DEFAULT_TO_EMAIL = EMAIL_HOST_USER
@@ -60,6 +60,11 @@ INSTALLED_APPS = [
     'django_filters',
     MAIN_APP
 ]
+
+# AUTHENTICATION_BACKENDS = (
+#     'django.contrib.auth.backends.ModelBackend', # default
+# #     'guardian.backends.ObjectPermissionBackend',
+# )
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -143,7 +148,7 @@ WSGI_APPLICATION = MAIN_APP+'.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'suqihan',
+        'NAME': 'suqihan_test',
         'USER': 'root',
         'PASSWORD': 'sillyboy',
         'HOST': '127.0.0.1',
@@ -177,6 +182,8 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
+#         MAIN_APP+'.base.permission.ModelPerm',
+#         'rest_framework.permissions.DjangoModelPermissions',
         MAIN_APP+'.base.permission.IsAuthenticatedReadOnly',
     ],
     'DEFAULT_RENDERER_CLASSES': (

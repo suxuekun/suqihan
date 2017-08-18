@@ -1,15 +1,59 @@
 {% extends "./base/base_site.html" %}
+{% load static %}
 {% block title %}
 	logined in title
 {% endblock title%}
+{% block ext_script %}
 
-{% block block2 %}
+    <script src="{% static 'app/js/index.js' %}"></script>
+{% endblock %}
+{% block content_content %}
 	
-	<div>
 	<hr/>
-	here is replaced block2<br/>
-	<a href="/logout">logout here</a>
-	<hr/>
+	<div class="row">
+	  <div class="col-xs-6 col-md-3">
+	  	<div class="row">
+	    <a href="#" class="thumbnail">
+	      11111
+	    </a>
+	    </div>
+	  </div>
+	  <div class="col-xs-6 col-md-3">
+	    <a href="#" class="thumbnail">
+	      11111
+	    </a>
+	  </div>
+	  <div class="col-xs-6 col-md-3">
+	    <a href="#" class="thumbnail">
+	      11111
+	    </a>
+	  </div>
+	  <div class="col-xs-6 col-md-3">
+	    <a href="#" class="thumbnail">
+	      11111
+	    </a>
+	  </div>
 	</div>
- 
-{% endblock block2 %}
+	<a href="/logout">logout here</a>
+	here is replaced block2<br/>
+	here is replaced block2<br/>
+	here is replaced block2<br/>
+	here is replaced block2<br/>
+	here is replaced block2<br/>
+	here is replaced block2<br/>
+	here is replaced block2<br/>
+	here is replaced block2<br/>
+	here is replaced block2<br/>
+
+	here is replaced block2<br/>
+
+	here is replaced block2<br/>
+	<div style="height:300px">
+	</div>
+	here is replaced block2<br/>
+	here is replaced block2<br/>
+	here is replaced block2<br/>
+	
+	<hr/>
+	
+{% endblock content_content %}

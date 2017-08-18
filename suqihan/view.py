@@ -1,11 +1,13 @@
-from django.views.generic.base import TemplateView
 from django.contrib.auth import authenticate, login
 from django.http.response import HttpResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
+from django.views.generic.base import TemplateView
+
 from suqihan.base.exceptions import AuthFail
 from suqihan.base.response import GeneralResponseWrapper
-    
+
+
 class loginView(TemplateView):
     template_name = "app/login.html",
     def post(self,request, *args, **kwargs):

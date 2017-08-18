@@ -13,16 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
 from django.conf import settings
+from django.conf.urls import url, include
 from django.conf.urls.static import static
+from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.views import logout
 from django.views.i18n import JavaScriptCatalog
-from django.contrib.auth.decorators import user_passes_test
-from . import admin,auth
-from .view import  IndexView,loginView
+
+from . import admin, auth
+from .view import  IndexView, loginView
+
+
 apis = []
 apis += auth.apis
+# apis += test.apis
 login_forbidden =  user_passes_test(lambda u: u.is_anonymous(), '/')
 urlpatterns = [
     url(r'^login/$',login_forbidden(loginView.as_view(template_name="app/login.html")),name="login"),

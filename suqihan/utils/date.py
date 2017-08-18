@@ -1,9 +1,10 @@
 import calendar
-import pytz
+from datetime import date, datetime, timedelta
+
 from dateutil import relativedelta
-from datetime import date#datetime,timedelta,
-from datetime import datetime, timedelta
 from django.conf import settings
+import pytz
+
 
 def diffDate(d1,d2):
     return relativedelta.relativedelta(d2,d1)
