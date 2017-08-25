@@ -20,13 +20,14 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.views import logout
 from django.views.i18n import JavaScriptCatalog
 
-from . import admin, auth
+from . import admin, auth ,test
 from .view import  IndexView, loginView
 
 
 apis = []
 apis += auth.apis
-# apis += test.apis
+apis += test.apis
+
 login_forbidden =  user_passes_test(lambda u: u.is_anonymous(), '/')
 urlpatterns = [
     url(r'^login/$',login_forbidden(loginView.as_view(template_name="app/login.html")),name="login"),
